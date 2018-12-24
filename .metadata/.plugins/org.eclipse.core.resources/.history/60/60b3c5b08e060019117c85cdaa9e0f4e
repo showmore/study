@@ -1,0 +1,70 @@
+package cn.joyair.mvcproject.dao;
+
+import java.sql.Connection;
+import java.util.List;
+
+import cn.joyair.mvcproject.model.User;
+
+public class UserDaoImpl extends BaseDao<User> implements UserDao {
+
+	@Override
+	public int save(User user) {
+		String sql="insert into `USER`(`ID`,`NAME`,`IDENTITY`,`TYPE`,`PHONE`,`IDENTITY_TYPE`,`GENDER`,`BIRTHDAY`,`BELONGS_TO`)  VALUES(?,?,?,?,?,?,?,?,?)";
+		Object args = null;
+		return super.update(sql, args);
+
+	}
+
+	@Override
+	public int deleteUserById(int id) {
+		String sql="";
+		Object args = null;
+		return super.update(sql, args);
+	}
+
+	@Override
+	public int updateUserById(User user) {
+		String sql="";
+		Object args = null;
+		return super.update(sql, args);
+	}
+
+	@Override
+	public User get(String id) {
+		String sql = "select `NAME`,`GENDER`,`BIRTHDAY`,`IDENTITY`,`PHONE` from `USER` WHERE  `ID` = ?";	
+		return super.get(sql, id);
+	}
+	
+	@Override
+	public User get(Connection conn, String id) {
+		
+		String sql = "select `NAME`,`GENDER`,`BIRTHDAY`,`IDENTITY`,`PHONE` from `USER` WHERE  `ID` = ?";	
+
+		return super.get(conn, sql, id);
+	}
+
+	@Override
+	public List<User> getListAll(int gd) {
+		
+		String sql="select `ID`, `NAME`,`GENDER`,`BIRTHDAY`,`IDENTITY`,`PHONE` from `USER` WHERE  `GENDER` = ?";
+		return super.getList(sql, gd);
+	}
+
+	@Override
+	public List<User> getListAll() {
+		String sql="select `ID`, `NAME`,`GENDER`,`BIRTHDAY`,`IDENTITY`,`PHONE` from `USER`;";
+
+		return super.getList(sql);
+	}
+
+
+
+	@Override
+	public int getCountByName(String username) {
+		String sql="";
+		Object args = null;
+		return (int) super.getValue(sql, args);
+	}
+
+
+}

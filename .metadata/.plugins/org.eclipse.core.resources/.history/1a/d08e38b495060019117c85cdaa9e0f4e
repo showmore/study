@@ -1,0 +1,70 @@
+package cn.joyair.mvcproject.service;
+
+import java.sql.Connection;
+import java.util.List;
+
+import cn.joyair.mvcproject.dao.FactoryDao;
+import cn.joyair.mvcproject.dao.UserDao;
+import cn.joyair.mvcproject.dao.UserDaoImpl;
+import cn.joyair.mvcproject.model.User;
+import cn.joyair.mvcproject.utils.JdbcUtils;
+
+public class UserServiceImpl implements UserService {
+//	UserDao userDao = new UserDaoImpl();
+	UserDao userDao = FactoryDao.getUserDao();
+	
+	@Override
+	public int save(User user) {
+		return userDao.save(user);
+	}
+
+	@Override
+	public int deleteUserById(int id) {
+		return userDao.deleteUserById(id);
+	}
+
+	@Override
+	public int updateUser(User user) {
+		return userDao.updateUser(user);
+	}
+
+	@Override
+	public User get(String id) {
+		return userDao.get(id);
+	}
+
+	/**
+	 * service层的意义体现在这里
+	 * 不涉及实际操作数据库的业务逻辑代码，都应该写在service层
+	 */
+	@Override
+	public User getTransaction(String id) {
+		Connection conn = null;
+		User user= null;
+		try {
+			conn = JdbcUtils.getConnection();
+			conn.setAutoCommit(false); //开启事务
+			user = userDao.get(conn, id);
+			conn.commit();
+		}catch (Exception e) {
+			JdbcUtils.rollbackTransaction(conn); //回滚事务
+		}
+		return user;
+	}
+
+	@Override
+	public List<User> getListAll() {
+		return userDao.getListAll();
+	}
+
+	@Override
+	public int getCountByName(String username) {
+		return userDao.getCountByName(username);
+	}
+
+	@Override
+	public List<User> getListAll(int gd) {
+		return userDao.getListAll(gd);
+	}
+
+}

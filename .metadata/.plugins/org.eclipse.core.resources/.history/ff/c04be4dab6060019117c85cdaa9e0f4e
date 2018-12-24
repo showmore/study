@@ -1,0 +1,85 @@
+package cn.joyair.mvcproject.controller;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.rmi.server.ServerCloneException;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import cn.joyair.mvcproject.model.User;
+import cn.joyair.mvcproject.service.FactoryService;
+import cn.joyair.mvcproject.service.UserService;
+
+public class UserController extends HttpServlet{
+	private static final long serialVersionUID = 1L;
+	
+	UserService userService = FactoryService.getUserService(); 
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doPost(req, resp);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws  ServletException, IOException {
+		System.out.println("这里是doPOST处理");
+		// 在这一个方法里需要转发增删改查需求
+		
+		// 设置字符集
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+		
+		String mn =req.getServletPath();
+		mn = mn.substring(1);
+		mn = mn.substring(0, mn.length()-4);
+
+//		if(mn.equals("query")) {
+//			query();
+//		}
+		//利用反射，用mn地址名判断方法名
+		try {
+			Method method = this.getClass().getDeclaredMethod(mn, HttpServletRequest.class, HttpServletResponse.class);
+			method.invoke(this, req, resp);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
+	
+	private void add(HttpServletRequest req, HttpServletResponse resp) throws  ServletException, IOException {
+		
+	}
+	
+	private void query(HttpServletRequest req, HttpServletResponse resp) throws  ServletException, IOException {
+		System.out.println("Let's query!");
+		String username = req.getParameter("username");
+		String identity = req.getParameter("identity");
+		String phone = req.getParameter("phone");
+		
+		/**正则表达式**/
+	    String reg = "(?:')|(?:--)|(/\\*(?:.|[\\n\\r])*?\\*/)|"
+	                + "(\\b(select|update|union|and|or|delete|insert|trancate|char|into|substr|ascii|declare|exec|count|master|into|drop|execute)\\b)";
+		
+	    username = username.replaceAll(reg, "");
+	    identity = identity.replaceAll(reg, "");
+	    phone = phone.replaceAll(reg, "");
+	    
+		List<User> list = userService.query(username,identity,phone);
+		System.out.println(list);
+		req.setAttribute("userList", list);
+
+	}
+	
+	private void delete(HttpServletRequest req, HttpServletResponse resp) throws  ServletException, IOException {
+		
+	}
+	
+	private void update(HttpServletRequest req, HttpServletResponse resp) throws  ServletException, IOException {
+		
+	}
+	
+}

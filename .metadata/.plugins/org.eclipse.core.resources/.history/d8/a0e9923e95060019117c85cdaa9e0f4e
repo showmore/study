@@ -1,0 +1,11 @@
+package cn.joyair.mvcproject.service;
+
+import cn.joyair.mvcproject.dao.UserDao;
+import cn.joyair.mvcproject.dao.UserDaoImpl;
+
+public class FactoryService {
+
+	public static UserService getUserService() {
+		return new UserServiceImpl();
+	}
+}

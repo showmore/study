@@ -1,0 +1,67 @@
+package cn.joyair.mvcproject.dao;
+
+import java.sql.Connection;
+import java.util.List;
+
+import cn.joyair.mvcproject.model.User;
+
+public class UserDaoImpl extends BaseDao<User> implements UserDao {
+
+	@Override
+	public int save(User user) {
+		String sql="insert into `USER`(`ID`,`NAME`,`IDENTITY`,`TYPE`,`PHONE`,`IDENTITY_TYPE`,`GENDER`,`BIRTHDAY`,`BELONGS_TO`)  VALUES(?,?,?,?,?,?,?,?,?);";
+		return super.update(sql, user.getId(), user.getName(), user.getIdentity(), user.getType(), user.getPhone(), user.getIdentity_type(), user.getGender(), user.getBirthday(), user.getBelongs_to());
+
+	}
+
+	@Override
+	public int deleteUserById(int id) {
+		String sql="DELETE FROM `USER` WHERE `ID`=?;";
+		return super.update(sql, id);
+	}
+
+	@Override
+	public int updateUser(User user) {
+		String sql="UPDATE `USER` SET `NAME`=?,`IDENTITY`=?,`TYPE`=?,`PHONE`=?,`IDENTITY_TYPE`=?,`GENDER`=?,`BIRTHDAY`=?,`BELONGS_TO`=? WHERE `ID` = ?;";
+		return super.update(sql, user.getName(), user.getIdentity(), user.getType(), user.getPhone(), user.getIdentity_type(), user.getGender(), user.getBirthday(), user.getBelongs_to(), user.getId());
+	}
+
+	@Override
+	public User get(String id) {
+		String sql = "select `NAME`,`GENDER`,`BIRTHDAY`,`IDENTITY`,`PHONE` from `USER` WHERE  `ID` = ?;";	
+		return super.get(sql, id);
+	}
+	
+	@Override
+	public User get(Connection conn, String id) {
+		
+		String sql = "select `NAME`,`GENDER`,`BIRTHDAY`,`IDENTITY`,`PHONE` from `USER` WHERE  `ID` = ?;";	
+
+		return super.get(conn, sql, id);
+	}
+
+	@Override
+	public List<User> getListAll() {
+		
+		String sql="select `ID`, `NAME`,`GENDER`,`BIRTHDAY`,`IDENTITY`,`PHONE` from `USER` ;";
+		return super.getList(sql);
+	}
+
+	@Override
+	public List<User> getListAll() {
+		String sql="select `ID`, `NAME`,`GENDER`,`BIRTHDAY`,`IDENTITY`,`PHONE` from `USER`;";
+
+		return super.getList(sql);
+	}
+
+
+
+	@Override
+	public int getCountByName(String username) {
+		String sql="";
+		Object args = null;
+		return (int) super.getValue(sql, args);
+	}
+
+
+}

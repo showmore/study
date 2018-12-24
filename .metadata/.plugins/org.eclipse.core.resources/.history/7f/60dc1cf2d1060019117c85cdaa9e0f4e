@@ -1,0 +1,62 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@page import="cn.joyair.mvcproject.model.User"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>编辑用户</title>
+<style>
+	tr {
+		height:40px;
+	}
+	td {
+		padding:10px;
+		width:180px;
+		text-align: center;
+	}
+</style>
+</head>
+<body>
+<% User user = (User) request.getAttribute("user"); %>
+
+<form action="<%=request.getContextPath()%>/updatedo.udo">
+	<input type="hidden" name="userID" value="<%=user.getId() %>" />
+	<table
+		style="margin: 0 100px; padding: 50px; border: 1px #ccc solid; width: 400px;">
+		
+		<% 	
+			String note = (String)request.getAttribute("note");
+			if( note !=null && !"".equals(note)) { 
+		%>
+		<tr>
+			<td style="text-align:right; color: red; font-weight: bolder;">
+				<%=note %>
+			</td>
+		</tr>
+		<% } %>
+		<tr>
+			<td style="text-align: right;">用户名：</td>
+			<td style="text-align: left;"><input type="text"
+				name="username" value="<%=user.getName() %>" /></td>
+		</tr>
+		<tr>
+			<td style="text-align: right;">身份证号：</td>
+			<td style="text-align: left;"><input type="text"
+				name="identity" value="<%=user.getIdentity() %>" /></td>
+		</tr>
+		<tr>
+			<td style="text-align: right;">电话：</td>
+			<td style="text-align: left;"><input type="text"
+				name="phone" value="<%=user.getPhone() %>" /></td>
+		</tr>
+		<tr>
+			<td colspan=2 style="text-align: center;"><input type="submit"
+				value="编辑用户" />
+		</tr>
+
+	
+		</table>
+	</form>
+</body>
+</html>

@@ -1,0 +1,11 @@
+1543751895827	Convert local variable 'a' to field
+1543751908070	Encapsulate field 'a'
+1543754982293	Delete element
+1543755070380	Delete element
+1543755483342	Convert local variable 'classType' to field
+1543756143361	Encapsulate field 'color'
+1543756154035	Encapsulate field 'color'
+1543756192181	Encapsulate field 'color'
+1543932864646	Encapsulate field 'name'
+1543932882740	Encapsulate field 'id'
+1543932893069	Encapsulate field 'identity'

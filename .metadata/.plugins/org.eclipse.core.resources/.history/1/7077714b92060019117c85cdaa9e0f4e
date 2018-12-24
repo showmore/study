@@ -1,0 +1,52 @@
+package cn.joyair.mvcproject.service;
+
+import java.sql.Connection;
+import java.util.List;
+
+import cn.joyair.mvcproject.dao.UserDaoImpl;
+import cn.joyair.mvcproject.model.User;
+
+public class UserServiceImpl implements UserService {
+	UserDao userDao = new UserDaoImpl();
+	
+	@Override
+	public int save(User user) {
+		return 0;
+	}
+
+	@Override
+	public int deleteUserById(int id) {
+		return 0;
+	}
+
+	@Override
+	public int updateUser(User user) {
+		return 0;
+	}
+
+	@Override
+	public User get(String id) {
+		return null;
+	}
+
+	@Override
+	public User get(Connection conn, String id) {
+		return null;
+	}
+
+	@Override
+	public List<User> getListAll() {
+		return null;
+	}
+
+	@Override
+	public int getCountByName(String username) {
+		return 0;
+	}
+
+	@Override
+	public List<User> getListAll(int gd) {
+		return null;
+	}
+
+}

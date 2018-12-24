@@ -1,0 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="/MyWebProject/MySecondServlet" method="get">
+		<input name="aaa" type="text" value="111">
+		<input type="submit" value="Submit">
+	</form>
+	
+	<table>
+		<tr>
+		  <td>用户名：</td>
+		  <td><input type="text" name="username" /></td>
+		</tr>
+		<tr>
+		  <td>身份证号：</td>
+		  <td><input type="text" name="identity" /></td>
+		</tr>
+		<tr>
+		<tr>
+		  <td>生日：</td>
+		  <td><input type="text" name="birthday" /></td>
+		</tr>
+		  <td>电话：</td>
+		  <td><input type="text" name="phone" /></td>
+		</tr>
+
+	</table>
+
+	
+</body>
+</html>

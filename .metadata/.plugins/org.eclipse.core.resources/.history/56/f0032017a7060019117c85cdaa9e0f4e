@@ -1,0 +1,59 @@
+package cn.joyair.mvcproject.controller;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.rmi.server.ServerCloneException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class UserController extends HttpServlet{
+	private static final long serialVersionUID = 1L;
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doPost(req, resp);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws  ServletException, IOException {
+		System.out.println("这里是doPOST处理");
+		// 在这一个方法里需要转发增删改查需求
+		
+		String mn =req.getServletPath();
+		mn = mn.substring(1);
+		mn = mn.substring(0, mn.length()-4);
+
+//		if(mn.equals("query")) {
+//			query();
+//		}
+		//
+		try {
+			Method method = this.getClass().getDeclaredMethod(mn, HttpServletRequest.class, HttpServletResponse.class);
+			method.invoke(this, req, resp);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
+	
+	private void add(HttpServletRequest req, HttpServletResponse resp) throws  ServletException, IOException {
+		
+	}
+	
+	private void query(HttpServletRequest req, HttpServletResponse resp) throws  ServletException, IOException {
+		System.out.println("hello");
+	
+	}
+	
+	private void delete(HttpServletRequest req, HttpServletResponse resp) throws  ServletException, IOException {
+		
+	}
+	
+	private void update(HttpServletRequest req, HttpServletResponse resp) throws  ServletException, IOException {
+		
+	}
+	
+}

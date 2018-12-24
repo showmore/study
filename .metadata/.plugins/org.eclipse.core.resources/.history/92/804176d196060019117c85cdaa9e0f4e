@@ -1,0 +1,76 @@
+package cn.joyair.mvcproject.dao;
+
+import java.sql.Connection;
+import java.util.List;
+
+import cn.joyair.mvcproject.model.User;
+
+/**
+ * 制定规则，只定义方法，不去实现； 与user表有关系的操作方法
+ * @author Administrator
+ *
+ */
+public interface UserDao {
+	
+	/**
+	 * 实现插入一条用户数据
+	 * @param user
+	 * @return
+	 */
+	public int save(User user);
+	
+	/**
+	 * 根据输入用户编号删除对应用户数据
+	 * @param id
+	 * @return
+	 */
+	public int deleteUserById(int id);
+	
+	/**
+	 * 根据用户ＩＤ，修改对应用户信息数据
+	 * @param user
+	 * @return
+	 */
+	public int updateUser(User user);
+	
+	/**
+	 * 根据ID，获取一条数据,封装成User的对象实例
+	 * @param id
+	 * @return
+	 */
+	public User get(String id);
+	
+	/**
+	 * 
+	 * @param conn
+	 * @param id
+	 * @return
+	 */
+	public User get(Connection conn, String id);
+	
+	/**
+	 * 获取用户列表
+	 * @return
+	 */
+	public List<User> getListAll();
+	
+	/**
+	 * 获取记录条数
+	 * @param username
+	 * @return
+	 */
+	public int getCountByName(String username);
+
+	
+	public List<User> getListAll(int gd);
+
+	
+	
+	
+	
+	
+	
+	
+}
+
+	

@@ -1,0 +1,58 @@
+package cn.joyair.mvcproject.service;
+
+import java.sql.Connection;
+import java.util.List;
+
+import cn.joyair.mvcproject.model.User;
+
+public class UserServiceImpl implements UserService {
+
+	@Override
+	public int save(User user) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int deleteUserById(int id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int updateUser(User user) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public User get(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public User get(Connection conn, String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<User> getListAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getCountByName(String username) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<User> getListAll(int gd) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,42 @@
+package cn.joyair.mvcproject.service;
+
+import java.util.List;
+
+import cn.joyair.mvcproject.model.User;
+
+public interface UserService {
+
+	public int save(User user);
+	
+
+	public int deleteUserById(int id);
+	
+
+	public int updateUser(User user);
+	
+
+	public User get(String id);
+	
+
+	public User getTransaction(String id);
+	
+
+	public List<User> getListAll();
+	
+
+	public long getCountByName(String username);
+
+	
+	public List<User> getListAll(int gd);
+
+	/**
+	 * 用户模糊查询的方法
+	 * @param username
+	 * @param identity
+	 * @param birthday
+	 * @param phone
+	 * @return
+	 */
+	public List<User> query(String username,String identity, String birthday, String phone);
+
+}

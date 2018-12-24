@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<c3p0-config>
+	<named-config name="mysql">
+<!-- 连接mysql数据库的基本必要信息 -->
+		<property name="driverClass">com.mysql.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:mysql://10.2.127.31:3306/MVCProject?zeroDateTimeBehavior=convertToNull</property>
+		<property name="user">root</property>
+		<property name="password">J0y@iradm1n</property>
+	
+		<property name="acquireIncrement">5</property>
+		<property name="initialPoolSize">10</property>
+		<property name="minPoolSize">5</property>
+		<property name="maxPoolSize">50</property> 
+		<property name="maxStatements">2</property>
+		<property name="maxStatementsPerConnection">5</property>
+	
+	</named-config>
+</c3p0-config>

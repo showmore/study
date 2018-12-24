@@ -1,0 +1,5 @@
+0:0:0:0:0:0:0:1 - - [20/Dec/2018:22:35:02 +0800] "GET /MyWebProject/MyFirstServlet HTTP/1.1" 200 13
+127.0.0.1 - - [20/Dec/2018:23:25:13 +0800] "GET / HTTP/1.1" 404 1074
+0:0:0:0:0:0:0:1 - - [20/Dec/2018:23:25:25 +0800] "GET /MyWebProject/index.jsp HTTP/1.1" 200 272
+0:0:0:0:0:0:0:1 - - [20/Dec/2018:23:27:19 +0800] "GET /MyWebProject/index.jsp HTTP/1.1" 200 275
+0:0:0:0:0:0:0:1 - - [20/Dec/2018:23:27:23 +0800] "GET /MySecondServlet?aaa=111 HTTP/1.1" 404 1089
