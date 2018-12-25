@@ -41,6 +41,16 @@ public interface UserService {
 
 	public int updateUserById(User user);
 
+	/**
+	 * 判断用户登陆密码正确
+	 * @param username
+	 * @param identity
+	 * @return
+	 */
+	public User login(String username, String identity);
+
+
+
 
 
 

@@ -7,6 +7,7 @@ import java.rmi.server.ServerCloneException;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import cn.joyair.mvcproject.model.User;
 import cn.joyair.mvcproject.service.FactoryService;
 import cn.joyair.mvcproject.service.UserService;
+import cn.joyair.mvcproject.utils.CookieUtils;
 
 public class UserController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
@@ -60,7 +62,7 @@ public class UserController extends HttpServlet{
 		
 		int rows = userService.save(user);
 		if(rows>0) {
-			resp.sendRedirect(req.getContextPath() + "/index.jsp");
+			resp.sendRedirect(req.getContextPath() + "/main.jsp");
 		}else {
 			resp.sendRedirect(req.getContextPath() + "/error.jsp");
 //			throw new RuntimeException("添加用户失败！");
@@ -84,7 +86,7 @@ public class UserController extends HttpServlet{
 		List<User> list = userService.query(username,identity,phone);
 		System.out.println(list);
 		req.setAttribute("userList", list); // 把结果集放到req的属性空间
-		req.getRequestDispatcher("/index.jsp").forward(req, resp);
+		req.getRequestDispatcher("/main.jsp").forward(req, resp);
 
 	}
 	
@@ -93,7 +95,7 @@ public class UserController extends HttpServlet{
 		
 		int rows = userService.deleteUserById(id);
 		if(rows>0) {
-			resp.sendRedirect(req.getContextPath() + "/index.jsp");
+			resp.sendRedirect(req.getContextPath() + "/main.jsp");
 		}else {
 			resp.sendRedirect(req.getContextPath() + "/error.jsp");
 		}
@@ -131,16 +133,83 @@ public class UserController extends HttpServlet{
 		
 		int rows = userService.updateUserById(user);
 		if(rows>0) {
-			resp.sendRedirect(req.getContextPath()+"/index.jsp");
+			resp.sendRedirect(req.getContextPath()+"/main.jsp");
 		}else {
 			resp.sendRedirect(req.getContextPath()+"/error.jsp");
 		}
 		
+	}
+	
+	
+	
+	private void login(HttpServletRequest req, HttpServletResponse resp) throws  ServletException, IOException  {
+		System.out.println("login.udo");
+		String username = req.getParameter("username");
+		String identity = req.getParameter("identity");
+		String expiredays = req.getParameter("expiredays");
+
+		Cookie[] cookies = req.getCookies();
+		boolean login = false;
+		String account = null;
+		String ssid = null; //通过cookie拿到的判断标记
 		
+		if(cookies!=null && cookies.length>0) {
+			for(Cookie cookie:cookies ) {
+				if(cookie.getName().equals("userkey")) {
+					account = cookie.getValue();
+				}
+				if(cookie.getName().equals("ssid")) {
+					ssid = cookie.getValue();
+				}
+				
+			}
+		}
 		
+		if(account!=null && ssid !=null) {
+			login = ssid.equals(CookieUtils.md5Encrypt(username));
+			
+		}
+		
+		if(!login) { //表示用户没登陆
+			//用户第一次访问
+			User user = userService.login(username, identity); //通过访问数据库，判断用户密码匹配
+			//userService里的login方法，判断并返回User对象，或null
+			if(user != null ) { //登陆成功
+				expiredays=expiredays==null?"":expiredays;
+				switch (expiredays) {
+				case "7":
+					CookieUtils.createCookie(username, req, resp, 7*24*60*60);
+					break;
+				case "30":
+					CookieUtils.createCookie(username, req, resp, 30*24*60*60);
+					break;
+				case "100":
+					CookieUtils.createCookie(username, req, resp, Integer.MAX_VALUE);
+					break;
+
+				default:
+					CookieUtils.createCookie(username, req, resp, -1); //浏览器关闭，cookie失效
+					break;
+				}
+				
+				//
+				req.getRequestDispatcher("/main.jsp").forward(req, resp);
+			}else {
+				req.setAttribute("note", "用户名或密码错误！");
+				req.getRequestDispatcher("/login.jsp").forward(req, resp);
+			}
+			
+		 }else {
+			 
+			 req.getRequestDispatcher("/main.jsp").forward(req, resp);
+		 }
 		
 		
 	}
+	
+	
+	
+	
 	
 	
 }

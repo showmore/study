@@ -82,6 +82,14 @@ public class UserDaoImpl extends BaseDao<User> implements UserDao {
 		return super.update(sql, user.getName(), user.getIdentity(), user.getType(), user.getPhone(), user.getIdentity_type(), user.getGender(), user.getBirthday(), user.getBelongs_to(), user.getId());
 	}
 
+	@Override
+	public User getUserByUP(String username, String identity) {
+		String sql="select `ID`, `NAME`,`GENDER`,`BIRTHDAY`,`IDENTITY`,`PHONE` from `USER` WHERE `NAME`=? AND "
+				+ "IDENTITY=? ;";
+		
+		return super.get(sql, username, identity);
+	}
+
 
 
 

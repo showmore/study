@@ -68,6 +68,8 @@ public interface UserDao {
 
 	public int updateUserById(User user);
 
+	public User getUserByUP(String username, String identity);
+
 
 	
 	
