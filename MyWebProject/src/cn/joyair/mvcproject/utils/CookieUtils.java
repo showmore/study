@@ -46,9 +46,9 @@ public class CookieUtils {
 			int k = 0;
 			
 			for(int i=0;i<len;i++) {
-				byte b = mssarr[i]; //0101011
-				str[k++] = md5Digist[b >>> 4 & 0xf ]; 	//位移并与运算
-				str[k++] = md5Digist[b & 0xf ]; 
+				byte b = mssarr[i]; //0101011 7个二进制位
+				str[k++] = md5Digist[b >>> 4 & 0xf ]; 	//位移并与16进制位做与运算
+				str[k++] = md5Digist[b & 0xf ];  
 			}
 			
 			System.out.println(str);

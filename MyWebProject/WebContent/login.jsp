@@ -8,7 +8,7 @@
 </head>
 <body>
 <%--
-	<%
+
 		
 		Cookie[] cookieArr = request.getCookies();
 		if(cookieArr!=null && cookieArr.length >0){
@@ -27,11 +27,12 @@
 	
 --%>
 
-	<form action="<%=request.getContextPath()%>/login.udo">
+	<form id="loginform" action="<%=request.getContextPath()%>/login.udo">  
+	<%--  <form id="loginform" action="<%=response.encodeURL("/MyWebProject/login.udo") %>" method="get">   --%>
 		<table style="margin:280px auto; padding: 50px; border: 1px #ccc solid; width: 400px;">
 			<tr>
 				<td style="text-align: right;">用户名：</td>
-				<td style="text-align: left;"><input type="text" name="username" /></td>
+				<td style="text-align: left;"><input type="text" id="username" name="username" value=""/></td>
 			</tr>
 			<tr>
 				<td style="text-align: right;">密码：</td>
@@ -47,6 +48,16 @@
 			<tr>
 				<td colspan=2 style="text-align: center; padding-top:10px;"><input type="submit" value="登陆" /></td>
 			</tr>
+			
+			<tr>
+				<td colspan=2 style="text-align: center; padding-top:10px;">
+						<% if(request.getAttribute("note")!=null) { %>
+							<span style="color:red;font-weight:bolder;"><%=request.getAttribute("note") %></span>
+						<%} %>
+									
+				</td>
+			</tr>
+			
 
 		</table>
 	</form>
@@ -56,6 +67,17 @@
 
 
 <script type="text/javascript">
+	window.onload=function(){
+		var form = document.getElementById("loginform");
+		var username = document.getElementById("username");
+		if(getCookie("userKey")!="" && getCookie("userKey")!= null && getCookie("ssid")!= "" && getCookie("ssid")!= null){
+			username.value = getCookie("userKey"+"=");
+			//form.submit();
+		}
+	}
+
+
+
 	function setCookie(c_name, c_value, c_expiredays){ //expiredays单位是天
 		var expires = "";
 		if(c_expiredays!=null){

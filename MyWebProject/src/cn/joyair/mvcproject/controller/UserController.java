@@ -2,8 +2,6 @@ package cn.joyair.mvcproject.controller;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.nio.file.attribute.UserPrincipalLookupService;
-import java.rmi.server.ServerCloneException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,6 +9,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import cn.joyair.mvcproject.model.User;
 import cn.joyair.mvcproject.service.FactoryService;
@@ -79,9 +78,9 @@ public class UserController extends HttpServlet{
 	    String reg = "(?:')|(?:--)|(/\\*(?:.|[\\n\\r])*?\\*/)|"
 	                + "(\\b(select|update|union|and|or|delete|insert|trancate|char|into|substr|ascii|declare|exec|count|master|into|drop|execute)\\b)";
 		
-	    username = username.replaceAll(reg, "");
-	    identity = identity.replaceAll(reg, "");
-	    phone = phone.replaceAll(reg, "");
+	    username = username==null?"":username.replaceAll(reg, "");
+	    identity = identity==null?"":identity.replaceAll(reg, "");
+	    phone = phone==null?"":phone.replaceAll(reg, "");
 	    
 		List<User> list = userService.query(username,identity,phone);
 		System.out.println(list);
@@ -141,12 +140,11 @@ public class UserController extends HttpServlet{
 	}
 	
 	
-	
 	private void login(HttpServletRequest req, HttpServletResponse resp) throws  ServletException, IOException  {
 		System.out.println("login.udo");
-		String username = req.getParameter("username");
-		String identity = req.getParameter("identity");
-		String expiredays = req.getParameter("expiredays");
+		String username = req.getParameter("username")==null?"":req.getParameter("username");
+		String identity = req.getParameter("identity")==null?"":req.getParameter("identity");
+		String expiredays = req.getParameter("expiredays")==null?"":req.getParameter("expiredays");
 
 		Cookie[] cookies = req.getCookies();
 		boolean login = false;
@@ -192,7 +190,9 @@ public class UserController extends HttpServlet{
 					break;
 				}
 				
-				//
+				req.getSession().setAttribute("user", username);
+				
+				//登陆成功，允许进入main.jsp
 				req.getRequestDispatcher("/main.jsp").forward(req, resp);
 			}else {
 				req.setAttribute("note", "用户名或密码错误！");
@@ -200,7 +200,7 @@ public class UserController extends HttpServlet{
 			}
 			
 		 }else {
-			 
+			 req.getSession().setAttribute("user", username);
 			 req.getRequestDispatcher("/main.jsp").forward(req, resp);
 		 }
 		
@@ -209,7 +209,29 @@ public class UserController extends HttpServlet{
 	
 	
 	
-	
-	
+	private void logout(HttpServletRequest req, HttpServletResponse resp) throws  ServletException, IOException  {
+		//记录登陆状态的cookie
+		Cookie[] cookies =req.getCookies();
+		if(cookies != null && cookies.length>0) {
+			for(Cookie cookie:cookies) {
+				if(cookie.getName().equals("userkey")) {
+					cookie.setMaxAge(0);
+					resp.addCookie(cookie);
+				}
+				if(cookie.getName().equals("ssid")) {
+					cookie.setMaxAge(0);
+					resp.addCookie(cookie);
+				}
+			}
+		}
+		//记录登陆状态的session删除
+		HttpSession session = req.getSession();
+		if(session!=null) {
+			session.removeAttribute("user");
+		}
+		
+		//退出后跳转login.jsp
+		resp.sendRedirect(req.getContextPath()+"/login.jsp");
+	}
 	
 }

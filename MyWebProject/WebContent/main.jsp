@@ -20,6 +20,13 @@
 </style>
 </head>
 <body>
+	<%
+		String username = (String)request.getSession().getAttribute("user");
+		if(username==null || "".equals(username)){
+			response.sendRedirect(request.getContextPath()+"/login.jsp");
+		}
+	%>
+
 	<form action="<%=request.getContextPath()%>/query.udo">
 		<table
 			style="margin: 0 50px; padding: 50px; border: 1px #ccc solid; width: 400px;">
@@ -47,6 +54,11 @@
 			<tr>
 				<td colspan=2 style="text-align: center;">
 				<a href="<%=request.getContextPath()%>/add.jsp">添加新用户</a>
+				</td>
+			</tr>
+			<tr>
+				<td colspan=2 style="text-align: center;">
+				<a href="<%=request.getContextPath()%>/logout.udo">退出登陆</a>
 				</td>
 			</tr>
 
