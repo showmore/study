@@ -1,0 +1,13 @@
+JDK
+	JAVA_HOME:  JDK根目录
+	path:		JDK跟目录\bin
+	classpath:	.;JDK跟目录\lib
+
+
+MAVEN:
+	MAVEN_HOME	MAVEN根目录
+	path: MAVEN根目录\bin
+	配制MAVEN本地仓库 conf\settints.xml
+	<localRepository>D:\apache-maven-3.6.0\mvnrep</localRepository>
+
+	

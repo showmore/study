@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>productdetails</title>
+</head>
+<body>
+	<%
+		String pname = request.getAttribute("p");
+		out.println(pname);
+	%>
+	<br><br>
+	
+	<form action="">
+		<input type="hidden" name="pname" value="<%=pname %>">
+		<input style="width:60px; height:30px; background:red;color:#fff;"
+			 type="submit" value="加入购物车">
+	</form>
+	
+	
+	
+</body>
+</html>

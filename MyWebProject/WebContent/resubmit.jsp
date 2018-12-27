@@ -1,0 +1,68 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="java.util.UUID"%> 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+tr {
+	height: 40px;
+}
+
+td {
+	padding: 10px;
+	width: 180px;
+	text-align: center;
+}
+</style>
+</head>
+<body>
+	<% 
+		String uuid = UUID.randomUUID().toString();
+		session.setAttribute("uuid", uuid);
+	%>
+
+
+
+	<form action="<%=request.getContextPath()%>/sessionTestServlet">
+		<table
+			style="margin: 0 100px; padding: 50px; border: 1px #ccc solid; width: 400px;">
+			<input type="hidden" name="token" value="<%=uuid %>" /></td>
+			<tr>
+				<td style="text-align: right;">用户名：</td>
+				<td style="text-align: left;"><input type="text"
+					name="username" /></td>
+			</tr>
+			<tr>
+				<td style="text-align: right;">身份证号：</td>
+				<td style="text-align: left;"><input type="text"
+					name="identity" /></td>
+			</tr>
+
+			<tr>
+				<td colspan=2 style="text-align: center;"><input id="submitbtn" type="submit"
+					value="提交" />
+			</tr>
+
+		</table>
+	</form>
+
+
+</body>
+
+<script type="text/javascript">
+	window.onload=function(){
+		var btn = document.getElementById("submitbtn");
+		btn.onclick= function(){
+			this.disable =true;	//让按钮不可用
+			this.parentNode.submit();
+		}
+	}
+
+
+
+</script>
+
+</html>

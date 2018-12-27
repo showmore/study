@@ -1,0 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.util.List"%> 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>shoppingcart</title>
+</head>
+<body>
+	<%
+	List<String> products = (List<String>)session.getAttribute("car");
+		
+	for(String s:products){
+		out.println(s+"<br><br>");
+	}
+	
+	%>
+	
+	
+	
+</body>
+</html>

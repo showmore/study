@@ -2,8 +2,8 @@
 <typeInfoHistroy>
 <typeInfo handle="=MyWebProject/src&lt;cn.joyair.mywebproject{fruit.java[fruit" modifiers="513" timestamp="1543756420493"/>
 <typeInfo handle="=MyWebProject/src&lt;cn.joyair.mvcproject.utils{JdbcUtils.java[JdbcUtils" modifiers="1" timestamp="1545556891197"/>
-<typeInfo handle="=MyWebProject/src&lt;cn.joyair.mvcproject.dao{UserDao.java[UserDao" modifiers="513" timestamp="1545558044061"/>
+<typeInfo handle="=MyWebProject/src&lt;cn.joyair.mvcproject.dao{UserDao.java[UserDao" modifiers="513" timestamp="1545746389094"/>
 <typeInfo handle="=MyWebProject/D:\/apache-tomcat-8.5.35\/lib\/catalina.jar&lt;org.apache.catalina.ssi(SSIServletExternalResolver$ServletContextAndPath.class[ServletContextAndPath" modifiers="12" timestamp="1541237994000"/>
 <typeInfo handle="=MyWebProject/D:\/apache-tomcat-8.5.35\/lib\/servlet-api.jar&lt;javax.servlet(Servlet.class[Servlet" modifiers="1537" timestamp="1541237994000"/>
-<typeInfo handle="=MyWebProject/src&lt;cn.joyair.mvcproject.dao{UserDaoImpl.java[UserDaoImpl" modifiers="1" timestamp="1545558045937"/>
+<typeInfo handle="=MyWebProject/src&lt;cn.joyair.mvcproject.dao{UserDaoImpl.java[UserDaoImpl" modifiers="1" timestamp="1545746389094"/>
 </typeInfoHistroy>

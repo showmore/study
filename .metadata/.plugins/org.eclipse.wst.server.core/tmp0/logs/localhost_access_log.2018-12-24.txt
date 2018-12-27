@@ -27,3 +27,11 @@
 0:0:0:0:0:0:0:1 - - [24/Dec/2018:00:58:19 +0800] "GET /MyWebProject/updatedo.udo?userID=zhizhuxia&username=%E9%BB%84%E5%BB%BA&identity=31325135344143&phone=314141341411 HTTP/1.1" 200 1230
 0:0:0:0:0:0:0:1 - - [24/Dec/2018:00:58:30 +0800] "GET /MyWebProject/updatedo.udo?userID=zhizhuxia&username=%E9%BB%84%E5%BB%BA&identity=31325135344143&phone=314141341411 HTTP/1.1" 200 1228
 0:0:0:0:0:0:0:1 - - [24/Dec/2018:00:59:33 +0800] "GET /MyWebProject/updatedo.udo?userID=zhizhuxia&username=%E9%BB%84%E5%BB%BA&identity=31325135344143&phone=314141341411 HTTP/1.1" 200 1271
+127.0.0.1 - - [24/Dec/2018:12:22:26 +0800] "GET / HTTP/1.1" 404 1074
+0:0:0:0:0:0:0:1 - - [24/Dec/2018:12:22:39 +0800] "GET / HTTP/1.1" 404 1074
+0:0:0:0:0:0:0:1 - - [24/Dec/2018:12:22:39 +0800] "GET /favicon.ico HTTP/1.1" 404 1085
+0:0:0:0:0:0:0:1 - - [24/Dec/2018:12:22:46 +0800] "GET /MyWebProject/index.jsp HTTP/1.1" 200 1388
+0:0:0:0:0:0:0:1 - - [24/Dec/2018:12:23:07 +0800] "GET /MyWebProject/query.udo?username=&identity=&phone= HTTP/1.1" 200 4320
+0:0:0:0:0:0:0:1 - - [24/Dec/2018:12:23:16 +0800] "GET /MyWebProject/update.udo?userID=zhizhuxia HTTP/1.1" 200 1098
+0:0:0:0:0:0:0:1 - - [24/Dec/2018:12:23:20 +0800] "GET /MyWebProject/update.udo?userID=2dbf5514-b3be-4a15-b1c1-ab4edf40d3ea HTTP/1.1" 200 1131
+0:0:0:0:0:0:0:1 - - [24/Dec/2018:12:23:31 +0800] "GET /MyWebProject/add.jsp HTTP/1.1" 200 1109
