@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.util.UUID"%> 
+<%@ page import="java.util.UUID"%>
+<%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,31 +20,43 @@ td {
 </style>
 </head>
 <body>
-	<% 
+	<%
 		String uuid = UUID.randomUUID().toString();
 		session.setAttribute("uuid", uuid);
+
 	%>
 
 
 
-	<form action="<%=request.getContextPath()%>/sessionTestServlet">
+	<form action="<%=request.getContextPath()%>/sessionTestServlet.sdo">
 		<table
 			style="margin: 0 100px; padding: 50px; border: 1px #ccc solid; width: 400px;">
-			<input type="hidden" name="token" value="<%=uuid %>" /></td>
+			<input type="hidden" name="token" value="<%=uuid%>" />
+			</td>
 			<tr>
 				<td style="text-align: right;">用户名：</td>
 				<td style="text-align: left;"><input type="text"
 					name="username" /></td>
 			</tr>
 			<tr>
-				<td style="text-align: right;">身份证号：</td>
+				<td style="text-align: right;">密码：</td>
 				<td style="text-align: left;"><input type="text"
 					name="identity" /></td>
 			</tr>
+			<br>
+			<br>
+			<tr>
+				<td colspan=2 style="text-align: center;"><input type="text"
+					value="" name="checkCode"><img alt="验证码"
+					src="<%=request.getContextPath()%>/drawCheckCode.sdo"></td>
+
+			</tr>
+			<br>
+			<br>
 
 			<tr>
-				<td colspan=2 style="text-align: center;"><input id="submitbtn" type="submit"
-					value="提交" />
+				<td colspan=2 style="text-align: center;"><input id="submitbtn"
+					type="submit" value="提交" /></td>
 			</tr>
 
 		</table>
@@ -53,16 +66,15 @@ td {
 </body>
 
 <script type="text/javascript">
-	window.onload=function(){
+	window.onload = function() {
 		var btn = document.getElementById("submitbtn");
-		btn.onclick= function(){
-			this.disable =true;	//让按钮不可用
+		btn.onclick = function() {
+			this.disable = true; //让按钮不可用
 			this.parentNode.submit();
 		}
 	}
-
-
-
 </script>
+
+
 
 </html>

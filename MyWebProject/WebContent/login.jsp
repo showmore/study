@@ -71,7 +71,7 @@
 		var form = document.getElementById("loginform");
 		var username = document.getElementById("username");
 		if(getCookie("userKey")!="" && getCookie("userKey")!= null && getCookie("ssid")!= "" && getCookie("ssid")!= null){
-			username.value = getCookie("userKey"+"=");
+			username.value = getCookie("userKey");
 			//form.submit();
 		}
 	}

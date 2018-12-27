@@ -8,6 +8,7 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
 
 public class DemoFilter implements Filter {
 
@@ -20,12 +21,14 @@ public class DemoFilter implements Filter {
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
 			throws IOException, ServletException {
 		System.out.println("dofilter");
+		HttpServletRequest hreq = (HttpServletRequest)req;
 		chain.doFilter(req, resp); //À¹½ØÆ÷ÇëÇóÁ´·ÅÐÐ
 		
 	}
 
 	@Override
 	public void init(FilterConfig config) throws ServletException {
+		
 		System.out.println("init filter");
 		System.out.println(config.getInitParameter("username"));
 		

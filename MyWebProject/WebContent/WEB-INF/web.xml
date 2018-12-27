@@ -9,11 +9,7 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <servlet-name>HelloWorld</servlet-name>
-    <servlet-class>cn.joyair.mywebproject.HelloWorld</servlet-class>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
+
   <servlet>
     <servlet-name>UserController</servlet-name>
     <servlet-class>cn.joyair.mvcproject.controller.UserController</servlet-class>
@@ -22,6 +18,7 @@
     <servlet-name>UserController</servlet-name>
     <url-pattern>*.udo</url-pattern>
   </servlet-mapping>
+  
   <filter>
     <filter-name>DemoFilter</filter-name>
     <filter-class>cn.joyair.mvcproject.filter.DemoFilter</filter-class>
@@ -36,4 +33,22 @@
     <dispatcher>REQUEST</dispatcher>
     <dispatcher>FORWARD</dispatcher>
   </filter-mapping>
+  
+  
+    <filter>
+    <filter-name>TestFilter</filter-name>
+    <filter-class>cn.joyair.mvcproject.filter.TestFilter</filter-class>
+    <init-param>
+      <param-name>username</param-name>
+      <param-value>George</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>TestFilter</filter-name>
+    <url-pattern>/sessiontest.jsp</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+  </filter-mapping>
+  
+  
 </web-app>
