@@ -1,0 +1,31 @@
+package cn.joyair.mvcproject.lisener;
+
+import javax.servlet.ServletRequestAttributeEvent;
+import javax.servlet.ServletRequestAttributeListener;
+import javax.servlet.ServletRequestEvent;
+import javax.servlet.ServletRequestListener;
+import javax.servlet.annotation.WebListener;
+import javax.servlet.http.HttpServletRequest;
+/**
+ * 基本思路：
+ * 1.当请求进来的时候，记录访问者的信息，判断访问者，如果在数据库中存在这个用户，更新访问时间；如果没有则创建访问信息到数据库
+ * 2.记录在线用户的时候，记录访问进来的时间，10分钟，如果用户10分钟都没有请求操作，认为用户离线。数据库中在线记录删除。
+ * 	 ServletContextListener,web应用启动的时候，要做每5秒检查，过期用户，并且执行删除。
+ *
+ */
+@WebListener
+public class OnlineRequestListener implements ServletRequestListener {
+
+	@Override
+	public void requestDestroyed(ServletRequestEvent sre) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void requestInitialized(ServletRequestEvent event) {
+		HttpServletRequest session = (HttpServletRequest) event.getServletRequest()
+		
+	}
+
+}

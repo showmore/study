@@ -1,106 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
-	id="WebApp_ID" version="3.1">
-	<display-name>MyWebProject</display-name>
-	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
-		<welcome-file>index.htm</welcome-file>
-		<welcome-file>index.jsp</welcome-file>
-		<welcome-file>default.html</welcome-file>
-		<welcome-file>default.htm</welcome-file>
-		<welcome-file>default.jsp</welcome-file>
-	</welcome-file-list>
-
-	<servlet>
-		<servlet-name>UserController</servlet-name>
-		<servlet-class>cn.joyair.mvcproject.controller.UserController</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>UserController</servlet-name>
-		<url-pattern>*.udo</url-pattern>
-	</servlet-mapping>
-
-	<filter>
-		<filter-name>DemoFilter</filter-name>
-		<filter-class>cn.joyair.mvcproject.filter.DemoFilter</filter-class>
-		<init-param>
-			<param-name>username</param-name>
-			<param-value>George</param-value>
-		</init-param>
-	</filter>
-	<filter-mapping>
-		<filter-name>DemoFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-		<dispatcher>REQUEST</dispatcher>
-		<dispatcher>FORWARD</dispatcher>
-	</filter-mapping>
-
-
-	<filter>
-		<filter-name>TestFilter</filter-name>
-		<filter-class>cn.joyair.mvcproject.filter.TestFilter</filter-class>
-		<init-param>
-			<param-name>username</param-name>
-			<param-value>George</param-value>
-		</init-param>
-	</filter>
-	<filter-mapping>
-		<filter-name>TestFilter</filter-name>
-		<url-pattern>/sessiontest.jsp</url-pattern>
-		<dispatcher>REQUEST</dispatcher>
-		<dispatcher>FORWARD</dispatcher>
-	</filter-mapping>
-
-	<filter>
-		<filter-name>CleanCache</filter-name>
-		<filter-class>cn.joyair.mvcproject.filter.CleanCache</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>CleanCache</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-
-
-	<filter>
-		<filter-name>AutoLogin</filter-name>
-		<filter-class>cn.joyair.mvcproject.filter.AutoLogin</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>AutoLogin</filter-name>
-		<url-pattern>/login.jsp</url-pattern>
-	</filter-mapping>
-
-	<filter>
-		<filter-name>IsLoginFilter</filter-name>
-		<filter-class>cn.joyair.mvcproject.filter.IsLoginFilter</filter-class>
-		<init-param>
-			<param-name>authority</param-name>
-			<param-value>main.jsp,update.jsp,add.jsp,add.udo,delete.udo,query.udo,update.udo,updatedo.udo</param-value>
-		</init-param>
-		<init-param>
-			<param-name>noautho</param-name>
-			<param-value>login.jsp,login.udo,logout.jsp,logout.udo,error.jsp,index.jsp</param-value>
-		</init-param>
-	</filter>
-	<filter-mapping>
-		<filter-name>IsLoginFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-	
-	<!-- 注册监听器 -->
-	<listener>
-		<listener-class> cn.joyair.mvcproject.lisener.ServletContextListenerImpl </listener-class>
-	</listener>
-	
-	<listener>
-		<listener-class> cn.joyair.mvcproject.lisener.ServletRequestAttributeListenerImpl </listener-class>
-	</listener>
-	
-	<listener>
-		<listener-class> cn.joyair.mvcproject.lisener.ServletContextAttributeListenerImpl </listener-class>
-	</listener>
-
-
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>MyWebProject</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>UserController</servlet-name>
+    <servlet-class>cn.joyair.mvcproject.controller.UserController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserController</servlet-name>
+    <url-pattern>*.udo</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <filter-name>DemoFilter</filter-name>
+    <filter-class>cn.joyair.mvcproject.filter.DemoFilter</filter-class>
+    <init-param>
+      <param-name>username</param-name>
+      <param-value>George</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>DemoFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+  </filter-mapping>
+  <filter>
+    <filter-name>TestFilter</filter-name>
+    <filter-class>cn.joyair.mvcproject.filter.TestFilter</filter-class>
+    <init-param>
+      <param-name>username</param-name>
+      <param-value>George</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>TestFilter</filter-name>
+    <url-pattern>/sessiontest.jsp</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+  </filter-mapping>
+  <filter>
+    <filter-name>CleanCache</filter-name>
+    <filter-class>cn.joyair.mvcproject.filter.CleanCache</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>CleanCache</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>AutoLogin</filter-name>
+    <filter-class>cn.joyair.mvcproject.filter.AutoLogin</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AutoLogin</filter-name>
+    <url-pattern>/login.jsp</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>IsLoginFilter</filter-name>
+    <filter-class>cn.joyair.mvcproject.filter.IsLoginFilter</filter-class>
+    <init-param>
+      <param-name>authority</param-name>
+      <param-value>main.jsp,update.jsp,add.jsp,add.udo,delete.udo,query.udo,update.udo,updatedo.udo,online.jsp</param-value>
+    </init-param>
+    <init-param>
+      <param-name>noautho</param-name>
+      <param-value>login.jsp,login.udo,logout.jsp,logout.udo,error.jsp,index.jsp,online.udo</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>IsLoginFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <listener>
+    <listener-class> cn.joyair.mvcproject.lisener.ServletContextListenerImpl </listener-class>
+  </listener>
+  <listener>
+    <listener-class> cn.joyair.mvcproject.lisener.ServletRequestAttributeListenerImpl </listener-class>
+  </listener>
+  <listener>
+    <listener-class> cn.joyair.mvcproject.lisener.ServletContextAttributeListenerImpl </listener-class>
+  </listener>
 </web-app>

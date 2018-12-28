@@ -26,8 +26,13 @@ public class OnlineServiceImpl implements OnlineService {
 	}
 
 	@Override
-	public void deleteExpiresOnline(String[] ssidArr) {
-		// todo
+	public void deleteExpiresOnline(List<Online> list) {
+		// 遍历这个List集合，删除操作
+		if(list!=null && list.size()>0) {
+			for(Online ol:list) {
+				onlineDao.deleteExpiresOnline(ol.getSsid());
+			}
+		}
 		
 	}
 

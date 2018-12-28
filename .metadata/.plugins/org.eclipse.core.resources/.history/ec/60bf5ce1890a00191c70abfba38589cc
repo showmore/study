@@ -1,0 +1,15 @@
+package cn.joyair.mvcproject.service;
+
+import cn.joyair.mvcproject.controller.OnlineService;
+
+public class FactoryService {
+
+	public static UserService getUserService() {
+		return new UserServiceImpl();
+	}
+
+	public static OnlineService getOnlineService() {
+		return new OnlineServiceImpl();
+	}
+	
+}

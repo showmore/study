@@ -1,5 +1,5 @@
-<%@ page language="java" session="false" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" session="false"
+	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +7,7 @@
 <title>Login Page</title>
 </head>
 <body>
-<%--
+	<%--
 
 		
 		Cookie[] cookieArr = request.getCookies();
@@ -27,51 +27,55 @@
 	
 --%>
 
-	<form id="loginform" action="<%=request.getContextPath()%>/login.udo">  
-	<%--  <form id="loginform" action="<%=response.encodeURL("/MyWebProject/login.udo") %>" method="get">   --%>
-		<table style="margin:280px auto; padding: 50px; border: 1px #ccc solid; width: 400px;">
+	<form id="loginform" action="<%=request.getContextPath()%>/login.udo">
+		<%--  <form id="loginform" action="<%=response.encodeURL("/MyWebProject/login.udo") %>" method="get">   --%>
+		<table
+			style="margin: 280px auto; padding: 50px; border: 1px #ccc solid; width: 400px;">
 			<tr>
 				<td style="text-align: right;">用户名：</td>
-				<td style="text-align: left;"><input type="text" id="username" name="username" value=""/></td>
+				<td style="text-align: left;"><input type="text" id="username"
+					name="username" value="" /></td>
 			</tr>
 			<tr>
 				<td style="text-align: right;">密码：</td>
-				<td style="text-align: left;"><input type="text" name="identity" /></td>
+				<td style="text-align: left;"><input type="text"
+					name="identity" /></td>
 			</tr>
 			<tr>
-				<td colspan=2 style="text-align: center;">
-					<input type="radio" name="expiredays" value="7" />记住一周  <br>
-				    <input type="radio" name="expiredays" value="30" />记住一月 <br>
-					<input type="radio" name="expiredays" value="100" />永远记住  <br>
+				<td colspan=2 style="text-align: center;"><input type="radio"
+					name="expiredays" value="7" />记住一周 <br> <input type="radio"
+					name="expiredays" value="30" />记住一月 <br> <input type="radio"
+					name="expiredays" value="100" />永远记住 <br></td>
+			</tr>
+			<tr>
+				<td colspan=2 style="text-align: center; padding-top: 10px;"><input
+					type="submit" value="登陆" /></td>
+			</tr>
+
+			<tr>
+				<td colspan=2 style="text-align: center; padding-top: 10px;">
+					<% if(request.getAttribute("note")!=null) { %> <span
+					style="color: red; font-weight: bolder;"><%=request.getAttribute("note") %></span>
+					<%} %>
+
 				</td>
 			</tr>
-			<tr>
-				<td colspan=2 style="text-align: center; padding-top:10px;"><input type="submit" value="登陆" /></td>
-			</tr>
-			
-			<tr>
-				<td colspan=2 style="text-align: center; padding-top:10px;">
-						<% if(request.getAttribute("note")!=null) { %>
-							<span style="color:red;font-weight:bolder;"><%=request.getAttribute("note") %></span>
-						<%} %>
-									
-				</td>
-			</tr>
-			
+
 
 		</table>
 	</form>
-	
-	
+
+
 </body>
 
 
 <script type="text/javascript">
+<%-- js 实现自动登陆
 	window.onload=function(){
 		var form = document.getElementById("loginform");
 		var username = document.getElementById("username");
 		if(getCookie("userKey")!="" && getCookie("userKey")!= null && getCookie("ssid")!= "" && getCookie("ssid")!= null){
-			username.value = getCookie("userKey"+"=");
+			username.value = getCookie("userKey");
 			//form.submit();
 		}
 	}
@@ -113,7 +117,7 @@
 	//setCookie("ssid","abc",1);
 	//alert(document.cookie);
 	//alert(getCookie("ssid"));
-	
+--%>
 </script>
 
 

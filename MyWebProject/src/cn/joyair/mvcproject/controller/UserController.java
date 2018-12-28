@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import cn.joyair.mvcproject.model.Online;
 import cn.joyair.mvcproject.model.User;
 import cn.joyair.mvcproject.service.FactoryService;
+import cn.joyair.mvcproject.service.OnlineService;
 import cn.joyair.mvcproject.service.UserService;
 import cn.joyair.mvcproject.utils.CookieUtils;
 
@@ -20,6 +22,7 @@ public class UserController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
 	UserService userService = FactoryService.getUserService(); 
+	OnlineService onlineService = FactoryService.getOnlineService();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -190,8 +193,18 @@ public class UserController extends HttpServlet{
 					break;
 				}
 				
-				req.getSession().setAttribute("user", username);
+				req.getSession().setAttribute("user", user.getName());
+				//把在线状态online表里的username从游客状态改为真正的username
+				HttpSession session = req.getSession();
+				Online ol =onlineService.getOnlineBySsid(session.getId());
+				if(ol!=null) {
+					ol.setUsername(username);
+					onlineService.updateOnline(ol);
+				}
 				
+				
+				
+				//调用onlineService层的方法，获取到所有的在线用户的信息
 				//登陆成功，允许进入main.jsp
 				req.getRequestDispatcher("/main.jsp").forward(req, resp);
 			}else {
@@ -201,9 +214,16 @@ public class UserController extends HttpServlet{
 			
 		 }else {
 			 req.getSession().setAttribute("user", username);
+			//把在线状态online表里的username从游客状态改为真正的username
+			HttpSession session = req.getSession();
+			Online ol =onlineService.getOnlineBySsid(session.getId());
+			if(ol!=null) {
+				ol.setUsername(username);
+				onlineService.updateOnline(ol);
+			}
+			 //登录成功了，准许用户进入main.jsp
 			 req.getRequestDispatcher("/main.jsp").forward(req, resp);
 		 }
-		
 		
 	}
 	
@@ -232,6 +252,19 @@ public class UserController extends HttpServlet{
 		
 		//退出后跳转login.jsp
 		resp.sendRedirect(req.getContextPath()+"/login.jsp");
+	}
+
+	/**
+	 * 显示所有在线用户的信息
+	 * @param req
+	 * @param resp
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	public void online(HttpServletRequest req, HttpServletResponse resp) throws  ServletException, IOException  {
+		List<Online> onlineArr = onlineService.getAllonline();
+		req.setAttribute("online", onlineArr);
+		req.getRequestDispatcher("/online.jsp").forward(req, resp);;
 	}
 	
 }

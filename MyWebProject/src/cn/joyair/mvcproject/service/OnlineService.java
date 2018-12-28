@@ -19,7 +19,7 @@ public interface OnlineService {
 	
 	public void updateOnline(Online online);
 	
-	public void deleteExpiresOnline(String[] ssid);
+	public void deleteExpiresOnline(List<Online> list);
 	
 	public Online getOnlineBySsid(String ssid);
 	

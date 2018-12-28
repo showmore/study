@@ -107,45 +107,8 @@ td {
 	
 
 
-	<table border="1" cellpadding="0" cellspacing="0" style="width:80%;margin:0 auto;">
-		
-		<tr>
-			<td>在线用户ID</td>
-			<td>在线用户名</td>
-			<td>在线用户IP</td>
-			<td>在线用户访问页面</td>
-			<td>在线用户名进入时间</td>
-		</tr>
-
-		<%
-			Map<String,String> online = (Map<String,String>)application.getAttribute("online");
-			if(online!=null){
-				
-				for(String str:online.keySet()){
-				
-		
-		%>
-				<tr>
-					<td>${onlineMap.key}</td>
-					<td>${onlineMap.key}</td>
-					<td>${onlineMap.key}</td>
-					<td>${onlineMap.key}</td>
-					<td>${onlineMap.key}</td>
-				</tr>
-		<%
-				}
-			}
-		%>
-
-	</table>
-
-
-
-
-
-
-
 	
+
 	<table border="1" cellpadding="0" cellspacing="0" style="width:80%;margin:0 auto;">
 		
 		<tr>

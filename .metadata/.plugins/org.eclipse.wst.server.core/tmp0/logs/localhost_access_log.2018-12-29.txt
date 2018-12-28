@@ -1,0 +1,12 @@
+127.0.0.1 - - [29/Dec/2018:00:08:59 +0800] "GET / HTTP/1.1" 404 1074
+127.0.0.1 - - [29/Dec/2018:00:09:22 +0800] "GET /MyWebProject/online.jsp HTTP/1.1" 302 -
+127.0.0.1 - - [29/Dec/2018:00:09:22 +0800] "GET /MyWebProject/login.jsp HTTP/1.1" 302 -
+127.0.0.1 - - [29/Dec/2018:00:09:22 +0800] "GET /MyWebProject/main.jsp HTTP/1.1" 200 1742
+127.0.0.1 - - [29/Dec/2018:00:09:22 +0800] "GET /favicon.ico HTTP/1.1" 404 1085
+127.0.0.1 - - [29/Dec/2018:00:09:34 +0800] "GET /MyWebProject/online.jsp HTTP/1.1" 200 427
+127.0.0.1 - - [29/Dec/2018:00:09:37 +0800] "GET /MyWebProject/online.jsp HTTP/1.1" 200 427
+127.0.0.1 - - [29/Dec/2018:00:09:41 +0800] "GET /MyWebProject/online.jsp HTTP/1.1" 200 427
+127.0.0.1 - - [29/Dec/2018:00:10:10 +0800] "GET /MyWebProject/online.jsp HTTP/1.1" 200 427
+127.0.0.1 - - [29/Dec/2018:00:11:37 +0800] "GET / HTTP/1.1" 404 1074
+127.0.0.1 - - [29/Dec/2018:00:11:45 +0800] "GET /MyWebProject/online.jsp HTTP/1.1" 500 2424
+127.0.0.1 - - [29/Dec/2018:00:11:47 +0800] "GET /MyWebProject/online.jsp HTTP/1.1" 500 2424

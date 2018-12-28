@@ -1,0 +1,14 @@
+127.0.0.1 - - [28/Dec/2018:21:55:38 +0800] "GET / HTTP/1.1" 404 1074
+127.0.0.1 - - [28/Dec/2018:21:56:15 +0800] "GET /MyWebProject/online.jsp HTTP/1.1" 200 -
+127.0.0.1 - - [28/Dec/2018:21:57:05 +0800] "GET / HTTP/1.1" 404 1074
+127.0.0.1 - - [28/Dec/2018:21:57:06 +0800] "GET /MyWebProject/online.jsp HTTP/1.1" 302 -
+127.0.0.1 - - [28/Dec/2018:21:57:08 +0800] "GET /MyWebProject/login.jsp HTTP/1.1" 200 1238
+127.0.0.1 - - [28/Dec/2018:21:58:13 +0800] "GET / HTTP/1.1" 404 1074
+127.0.0.1 - - [28/Dec/2018:21:58:22 +0800] "GET /MyWebProject/login.udo?username=george&identity=123&expiredays=7 HTTP/1.1" 200 1742
+127.0.0.1 - - [28/Dec/2018:21:58:31 +0800] "GET /MyWebProject/online.jsp HTTP/1.1" 200 409
+127.0.0.1 - - [28/Dec/2018:21:59:09 +0800] "GET /MyWebProject/online.jsp HTTP/1.1" 200 427
+127.0.0.1 - - [28/Dec/2018:21:59:10 +0800] "GET /MyWebProject/online.jsp HTTP/1.1" 200 427
+127.0.0.1 - - [28/Dec/2018:21:59:20 +0800] "GET /MyWebProject/online.jsp HTTP/1.1" 200 427
+127.0.0.1 - - [28/Dec/2018:21:59:21 +0800] "GET /MyWebProject/online.jsp HTTP/1.1" 200 427
+127.0.0.1 - - [28/Dec/2018:21:59:49 +0800] "GET /MyWebProject/online.jsp HTTP/1.1" 200 427
+127.0.0.1 - - [28/Dec/2018:21:59:50 +0800] "GET /MyWebProject/online.jsp HTTP/1.1" 200 427
