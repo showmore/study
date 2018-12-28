@@ -30,7 +30,7 @@ public class DemoFilter implements Filter {
 	public void init(FilterConfig config) throws ServletException {
 		
 		System.out.println("init filter");
-		System.out.println(config.getInitParameter("username"));
+		System.out.println("拿到了初始化参数："+config.getInitParameter("username"));
 		
 	}
 	
