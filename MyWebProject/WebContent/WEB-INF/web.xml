@@ -45,14 +45,7 @@
     <dispatcher>REQUEST</dispatcher>
     <dispatcher>FORWARD</dispatcher>
   </filter-mapping>
-  <filter>
-    <filter-name>CleanCache</filter-name>
-    <filter-class>cn.joyair.mvcproject.filter.CleanCache</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>CleanCache</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
+
   <filter>
     <filter-name>AutoLogin</filter-name>
     <filter-class>cn.joyair.mvcproject.filter.AutoLogin</filter-class>
@@ -66,11 +59,11 @@
     <filter-class>cn.joyair.mvcproject.filter.IsLoginFilter</filter-class>
     <init-param>
       <param-name>authority</param-name>
-      <param-value>main.jsp,update.jsp,add.jsp,add.udo,delete.udo,query.udo,update.udo,updatedo.udo,online.jsp</param-value>
+      <param-value>main.jsp,update.jsp,add.jsp,add.udo,delete.udo,query.udo,update.udo,updatedo.udo</param-value>
     </init-param>
     <init-param>
       <param-name>noautho</param-name>
-      <param-value>login.jsp,login.udo,logout.jsp,logout.udo,error.jsp,index.jsp,online.udo</param-value>
+      <param-value>login.jsp,login.udo,logout.jsp,logout.udo,error.jsp,index.jsp,online.jsp,online.udo</param-value>
     </init-param>
   </filter>
   <filter-mapping>

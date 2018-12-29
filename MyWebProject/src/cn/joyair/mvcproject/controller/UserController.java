@@ -201,12 +201,11 @@ public class UserController extends HttpServlet{
 					ol.setUsername(username);
 					onlineService.updateOnline(ol);
 				}
-				
-				
+
 				
 				//调用onlineService层的方法，获取到所有的在线用户的信息
 				//登陆成功，允许进入main.jsp
-				req.getRequestDispatcher("/main.jsp").forward(req, resp);
+				resp.sendRedirect(req.getContextPath()+"/main.jsp");
 			}else {
 				req.setAttribute("note", "用户名或密码错误！");
 				req.getRequestDispatcher("/login.jsp").forward(req, resp);
@@ -222,7 +221,7 @@ public class UserController extends HttpServlet{
 				onlineService.updateOnline(ol);
 			}
 			 //登录成功了，准许用户进入main.jsp
-			 req.getRequestDispatcher("/main.jsp").forward(req, resp);
+			 resp.sendRedirect(req.getContextPath()+"/main.jsp");
 		 }
 		
 	}
@@ -262,9 +261,10 @@ public class UserController extends HttpServlet{
 	 * @throws IOException
 	 */
 	public void online(HttpServletRequest req, HttpServletResponse resp) throws  ServletException, IOException  {
-		List<Online> onlineArr = onlineService.getAllonline();
-		req.setAttribute("online", onlineArr);
-		req.getRequestDispatcher("/online.jsp").forward(req, resp);;
+		List<Online> onlineList = onlineService.getAllonline();
+		System.out.println("onlineList="+onlineList);
+		req.setAttribute("online", onlineList);
+		req.getRequestDispatcher("/online.jsp").forward(req, resp);
 	}
 	
 }

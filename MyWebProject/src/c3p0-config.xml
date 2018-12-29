@@ -8,10 +8,10 @@
 		<property name="user">root</property>
 		<property name="password">J0y@iradm1n</property>
 	
-		<property name="acquireIncrement">5</property>
-		<property name="initialPoolSize">10</property>
+		<property name="acquireIncrement">2</property>
+		<property name="initialPoolSize">5</property>
 		<property name="minPoolSize">5</property>
-		<property name="maxPoolSize">50</property> 
+		<property name="maxPoolSize">10</property> 
 		<property name="maxStatements">2</property>
 		<property name="maxStatementsPerConnection">5</property>
 	

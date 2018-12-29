@@ -15,9 +15,10 @@ public class OnlineServiceImpl implements OnlineService {
 	}
 
 	@Override
-	public void insertOinline(Online online) {
-		onlineDao.insertOinline(online);
+	public void insertOnline(Online online) {
+		onlineDao.insertOnline(online);
 	}
+	
 
 	@Override
 	public void updateOnline(Online online) {
@@ -40,5 +41,7 @@ public class OnlineServiceImpl implements OnlineService {
 	public Online getOnlineBySsid(String ssid) {
 		return onlineDao.getOnlineBySsid(ssid);
 	}
+
+
 	
 }

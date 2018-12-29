@@ -44,33 +44,33 @@ public class OnlineServletContextLinstener implements ServletContextListener {
 		
 		//服务器启动的时候就被执行
 		//定时器
-		new Timer(5*1000, new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent event) {
-				List<Online> list = onlineService.getAllonline();
-				if(list!=null && list.size()>0) {
-					Date exDate = null;
-					for(Online ol:list) {
-						exDate = ol.getTime();
-						sdf.format(exDate);
-						Long exMilles;
-						try{
-							exMilles = sdf.parse(exDate.toString()).getTime();
-							if((System.currentTimeMillis() - exMilles) > MAX_MILLTIS) {
-								expiresUserList.add(ol);
-							}
-						} catch(ParseException | java.text.ParseException e) {
-							e.printStackTrace();
-						}
-
-					}
-				}
-				//从数据库中删除访问者信息
-				onlineService.deleteExpiresOnline(expiresUserList);
-				//数据库中删除了过时的访问者,清除集合
-				expiresUserList.clear();
-			}
-		}).start();
+//		new Timer(30*1000, new ActionListener() {
+//			@Override
+//			public void actionPerformed(ActionEvent event) {
+//				List<Online> list = onlineService.getAllonline();
+//				if(list!=null && list.size()>0) {
+//					Date exDate = null;
+//					for(Online ol:list) {
+//						exDate = ol.getTime();
+//						sdf.format(exDate);
+//						Long exMilles;
+//						try{
+//							exMilles = sdf.parse(exDate.toString()).getTime();
+//							if((System.currentTimeMillis() - exMilles) > MAX_MILLTIS) {
+//								expiresUserList.add(ol);
+//							}
+//						} catch(ParseException | java.text.ParseException e) {
+//							e.printStackTrace();
+//						}
+//
+//					}
+//				}
+//				//从数据库中删除访问者信息
+//				onlineService.deleteExpiresOnline(expiresUserList);
+//				//数据库中删除了过时的访问者,清除集合
+//				expiresUserList.clear();
+//			}
+//		}).start();
 		
 	}
 

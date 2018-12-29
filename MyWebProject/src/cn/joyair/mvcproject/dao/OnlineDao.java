@@ -15,7 +15,7 @@ public interface OnlineDao {
 	 * 插入一条Online信息
 	 * @param online
 	 */
-	public void insertOinline(Online online);
+	public void insertOnline(Online online);
 	
 	public void updateOnline(Online online);
 	

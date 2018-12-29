@@ -15,12 +15,14 @@ public interface OnlineService {
 	 * 插入一条Online信息
 	 * @param online
 	 */
-	public void insertOinline(Online online);
+	public void insertOnline(Online online);
 	
 	public void updateOnline(Online online);
 	
 	public void deleteExpiresOnline(List<Online> list);
 	
 	public Online getOnlineBySsid(String ssid);
+
+
 	
 }
